@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	genericheap "github.com/SachinHg/go-generic-heap"
+	"github.com/SachinHg/go-generic-heap"
 )
 
 // Example struct for custom heap usage
