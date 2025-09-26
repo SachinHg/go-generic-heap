@@ -1,24 +1,25 @@
 # Heap Package - Quick Usage Guide
 
 ## Installation
-1. Copy the `heap` directory to your project
-2. Import with `import "heap"`
+```bash
+go get github.com/SachinHg/go-generic-heap
+```
 
 ## Basic Usage
 
 ### Integer Heaps
 ```go
-import "heap"
+import "github.com/SachinHg/go-generic-heap"
 
 // Max heap (highest values first)
-maxHeap := heap.IntHeap(true)
+maxHeap := genericheap.IntHeap(true)
 maxHeap.PushItem(100)
 maxHeap.PushItem(70)
 maxHeap.PushItem(90)
 fmt.Println(maxHeap.Peek()) // 100
 
 // Min heap (lowest values first)
-minHeap := heap.IntHeap(false)
+minHeap := genericheap.IntHeap(false)
 minHeap.PushItem(100)
 minHeap.PushItem(70)
 minHeap.PushItem(90)
@@ -33,7 +34,7 @@ type PriceEntry struct {
 }
 
 // Max heap by price
-priceHeap := heap.New[PriceEntry](func(a, b PriceEntry) bool {
+priceHeap := genericheap.New[PriceEntry](func(a, b PriceEntry) bool {
     return a.Price > b.Price
 })
 
@@ -51,7 +52,7 @@ type Task struct {
 }
 
 // Higher priority first, then earlier deadline
-taskHeap := heap.New[Task](func(a, b Task) bool {
+taskHeap := genericheap.New[Task](func(a, b Task) bool {
     if a.Priority != b.Priority {
         return a.Priority > b.Priority
     }
