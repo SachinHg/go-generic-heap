@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"heap"
+	"github.com/SachinHg/go-generic-heap"
 )
 
 func main() {
 	// Test basic functionality
-	maxHeap := heap.IntHeap(true)
+	maxHeap := genericheap.IntHeap(true)
 	maxHeap.PushItem(100)
 	maxHeap.PushItem(70)
 	maxHeap.PushItem(90)
@@ -21,7 +21,7 @@ func main() {
 		Price     int
 	}
 
-	priceHeap := heap.New[PriceEntry](func(a, b PriceEntry) bool {
+	priceHeap := genericheap.New[PriceEntry](func(a, b PriceEntry) bool {
 		return a.Price > b.Price
 	})
 

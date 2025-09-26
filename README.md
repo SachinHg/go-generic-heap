@@ -33,7 +33,7 @@ import (
 
 func main() {
     // Max heap (highest values first)
-    maxHeap := heap.IntHeap(true)
+    maxHeap := genericheap.IntHeap(true)
     maxHeap.PushItem(100)
     maxHeap.PushItem(70)
     maxHeap.PushItem(90)
@@ -41,7 +41,7 @@ func main() {
     fmt.Println(maxHeap.Peek()) // 100
     
     // Min heap (lowest values first)
-    minHeap := heap.IntHeap(false)
+    minHeap := genericheap.IntHeap(false)
     minHeap.PushItem(100)
     minHeap.PushItem(70)
     minHeap.PushItem(90)
@@ -61,7 +61,7 @@ type PriceEntry struct {
 }
 
 // Max heap by price
-priceHeap := heap.New[PriceEntry](func(a, b PriceEntry) bool {
+priceHeap := genericheap.New[PriceEntry](func(a, b PriceEntry) bool {
     return a.Price > b.Price
 })
 
@@ -81,7 +81,7 @@ type Task struct {
 }
 
 // Higher priority first, then earlier deadline
-taskHeap := heap.New[Task](func(a, b Task) bool {
+taskHeap := genericheap.New[Task](func(a, b Task) bool {
     if a.Priority != b.Priority {
         return a.Priority > b.Priority
     }
@@ -93,16 +93,16 @@ taskHeap := heap.New[Task](func(a, b Task) bool {
 
 ```go
 // Integer heaps
-intMaxHeap := heap.IntHeap(true)   // Max heap
-intMinHeap := heap.IntHeap(false)  // Min heap
+intMaxHeap := genericheap.IntHeap(true)   // Max heap
+intMinHeap := genericheap.IntHeap(false)  // Min heap
 
 // Float heaps
-floatMaxHeap := heap.FloatHeap(true)   // Max heap
-floatMinHeap := heap.FloatHeap(false) // Min heap
+floatMaxHeap := genericheap.FloatHeap(true)   // Max heap
+floatMinHeap := genericheap.FloatHeap(false) // Min heap
 
 // String heaps
-stringMaxHeap := heap.StringHeap(true)   // Max heap
-stringMinHeap := heap.StringHeap(false) // Min heap
+stringMaxHeap := genericheap.StringHeap(true)   // Max heap
+stringMinHeap := genericheap.StringHeap(false) // Min heap
 ```
 
 ## API Reference
@@ -133,14 +133,14 @@ stringMinHeap := heap.StringHeap(false) // Min heap
 
 ### Commodity Prices (Max Heap)
 ```go
-priceHeap := heap.New[PriceEntry](func(a, b PriceEntry) bool {
+priceHeap := genericheap.New[PriceEntry](func(a, b PriceEntry) bool {
     return a.Price > b.Price
 })
 ```
 
 ### Task Scheduling (Priority + Deadline)
 ```go
-taskHeap := heap.New[Task](func(a, b Task) bool {
+taskHeap := genericheap.New[Task](func(a, b Task) bool {
     if a.Priority != b.Priority {
         return a.Priority > b.Priority
     }
@@ -150,7 +150,7 @@ taskHeap := heap.New[Task](func(a, b Task) bool {
 
 ### Court Booking (Min Heap by Next Free Time)
 ```go
-courtHeap := heap.New[Court](func(a, b Court) bool {
+courtHeap := genericheap.New[Court](func(a, b Court) bool {
     return a.NextFree < b.NextFree
 })
 ```
@@ -175,7 +175,7 @@ With this package, you get clean, type-safe heap operations:
 
 ```go
 // Clean approach - simple and type-safe
-maxHeap := heap.IntHeap(true)
+maxHeap := genericheap.IntHeap(true)
 maxHeap.PushItem(100)
 maxHeap.PushItem(70)
 fmt.Println(maxHeap.Peek()) // 100

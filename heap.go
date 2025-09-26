@@ -1,4 +1,4 @@
-package heap
+package genericheap
 
 import "container/heap"
 

@@ -22,7 +22,7 @@ func main() {
 
 	// 1. Simple integer heap (max heap)
 	fmt.Println("1. Integer Max Heap:")
-	intHeap := heap.IntHeap(true) // true = max heap
+	intHeap := genericheap.IntHeap(true) // true = max heap
 	intHeap.PushItem(100)
 	intHeap.PushItem(70)
 	intHeap.PushItem(90)
@@ -32,7 +32,7 @@ func main() {
 	
 	// 2. Simple integer heap (min heap)
 	fmt.Println("\n2. Integer Min Heap:")
-	minHeap := heap.IntHeap(false) // false = min heap
+	minHeap := genericheap.IntHeap(false) // false = min heap
 	minHeap.PushItem(100)
 	minHeap.PushItem(70)
 	minHeap.PushItem(90)
@@ -41,7 +41,7 @@ func main() {
 	
 	// 3. Custom struct heap
 	fmt.Println("\n3. Custom Struct Heap (by price):")
-	priceHeap := heap.New[PriceEntry](func(a, b PriceEntry) bool {
+	priceHeap := genericheap.New[PriceEntry](func(a, b PriceEntry) bool {
 		return a.Price > b.Price // Max heap by price
 	})
 	
@@ -53,7 +53,7 @@ func main() {
 	
 	// 4. Complex struct with multiple fields
 	fmt.Println("\n4. Task Priority Heap:")
-	taskHeap := heap.New[Task](func(a, b Task) bool {
+	taskHeap := genericheap.New[Task](func(a, b Task) bool {
 		// Higher priority first, then earlier deadline
 		if a.Priority != b.Priority {
 			return a.Priority > b.Priority
@@ -69,7 +69,7 @@ func main() {
 	
 	// 5. Using helper functions
 	fmt.Println("\n5. Using Helper Functions:")
-	stringHeap := heap.StringHeap(true) // Max heap for strings
+	stringHeap := genericheap.StringHeap(true) // Max heap for strings
 	stringHeap.PushItem("apple")
 	stringHeap.PushItem("banana")
 	stringHeap.PushItem("cherry")
@@ -78,7 +78,7 @@ func main() {
 	
 	// 6. Comparable types (Go 1.21+)
 	fmt.Println("\n6. Comparable Types:")
-	floatHeap := heap.FloatHeap(false) // Min heap for floats
+	floatHeap := genericheap.FloatHeap(false) // Min heap for floats
 	floatHeap.PushItem(3.14)
 	floatHeap.PushItem(2.71)
 	floatHeap.PushItem(1.41)
